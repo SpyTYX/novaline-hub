@@ -3,10 +3,9 @@
 # Novaline Hub
 The perfect hub for clicker games, now supporting over 6 games. 
 
-# Information
 ## Use Script
 ```lua
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/main/main.lua"))()
 ```
 
 ## Supported Games
