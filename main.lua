@@ -1798,7 +1798,7 @@ if game.PlaceId == 6075756195 then
     _G.autoHatchEgg = true
     _G.autoEggSelection = 'Regular'
     _G.speed = true
-    _G.selectedSpeed = 20
+    _G.selectedSpeed = 16
 
 
     function autoClick()
@@ -1987,4 +1987,1082 @@ if game.PlaceId == 6075756195 then
             wait(functionNum)
         end
     end
+end
+
+-- Prison Life
+if game.PlaceId == 155615604 then
+    local functionNum = 0.00000000000000005
+    print('Loading NovalineHub')
+    local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
+
+    local Novaline = NovalineConnection:create{
+		Name = 'NovalineHub',
+        Theme = NovalineConnection.Themes.Dark
+    }
+
+    local GunMods = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "GunMods"
+    }
+
+    local PlayerTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
+
+    local MiscTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Misc"
+    }
+
+    _G.godMode = true
+    _G.team = 'Bright blue'
+
+    local givegun = GunMods:Dropdown{
+        Name = "Gun Giver",
+        StartingText = "MP",
+        Description = "Select the gun you want to get",
+        Items = {
+            {"Remington", 'Remington 870'},
+            {"MP", 'M9'},
+            {"AK", 'AK-47'},
+        },
+        Callback = function(Items)
+            local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[Items].ITEMPICKUP
+            local Event = game:GetService("Workspace").Remote.ItemHandler
+            Event:InvokeServer(A_1)
+        end
+    }
+
+    local gunmod = GunMods:Dropdown{
+        Name = "GunMods",
+        StartingText = "MP",
+        Description = "Select the gun to have mods on",
+        Items = {
+            {"Remington", 'Remington 870'},
+            {"MP", 'M9'},
+            {"AK", 'AK-47'},
+        },
+        Callback = function(Items)
+            local module = nil
+            if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Items) then
+                module = require(game:GetService("Players").LocalPlayer.Backpack[Items].GunStates)
+            elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(Items) then
+                module = require(game:GetService("Players").LocalPlayer.Character[Items].GunStates)
+            end
+            if module ~= nil then
+                module["MaxAmmo"] = math.huge
+                module["StoredAmmo"] = math.huge
+                module["CurrentAmmo"] = math.huge
+                module["Spread"] = 0
+                module["ReloadTime"] = 0.0001
+            end
+        end
+    }
+
+    local selectTeam = PlayerTab:Dropdown{
+        Name = "Team Selector",
+        StartingText = "Guards",
+        Description = "Select the team you want to join",
+        Items = {
+            {"Guards", 'Bright blue'},
+            {"Prisoners", 'Bright orange'},
+        },
+        Callback = function(Items)
+            _G.team = Items
+            local args = {
+                [1] = _G.team
+            }
+            workspace.Remote.TeamEvent:FireServer(unpack(args))
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Reset Character",
+        Description = "Resets your character",
+        Callback = function() 
+            wait(0.05)
+            char.Humanoid.Health = 0
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Kill Roblox",
+        Description = "Destroys roblox instance (just do alt+f4 smh)",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Destroy NovalineHub",
+        Description = "whyyy :(((!!!",
+        Callback = function() 
+            wait(1)
+            Novaline:Destroy()
+        end
+    }
+
+    MiscTab:Slider{
+        Name = "Zoom",
+        Default = 130,
+        Min = 1,
+        Max = 10000,
+        Callback = function(state) 
+            plr.CameraMaxZoomDistance = state
+        end
+    }
+
+    function godMode()
+        while _G.godMode do
+            char.Humanoid.WalkSpeed = 155
+            char.Humanoid.JumpPower = 200
+            wait(functionNum)
+        end
+    end
+
+    PlayerTab:Toggle{
+        Name = "GodMode",
+        StartingState = false,
+        Description = "Enables speed and jump powers",
+        Callback = function(state) 
+            _G.godMode = state
+            godMode()
+        end
+    }
+end
+
+-- Ninja Legends
+if game.PlaceId == 3956818381 then
+    local functionNum = 0.00000000000000005
+    print('Loading NovalineHub')
+    local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
+
+    local Novaline = NovalineConnection:create{
+		Name = 'NovalineHub',
+        Theme = NovalineConnection.Themes.Dark
+    }
+
+    local AutoFarmTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "AutoFarmTab"
+    }
+
+    local EggsTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "EggsTab"
+    }
+
+    local PlayerTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
+
+    local MiscTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Misc"
+    }
+
+    _G.autoClicker = true
+    _G.autoSell = true
+    _G.autoUnlockAllIslands = true
+    _G.buySwords = true
+    _G.godMode = true
+    _G.teleportSelection = CFrame.new(0,0,0)
+    _G.autoHatchCrystals = true
+    _G.autoFarmBoss = true
+
+    function autoClick()
+        while _G.autoClicker do
+            local args = {
+                [1] = 'swingKatana'
+            }
+
+            game:GetService('Players').LocalPlayer.ninjaEvent:FireServer(unpack(args))
+            wait(functionNum)
+        end
+    end
+
+    function autoSell()
+        while _G.autoSell do
+            if _G.autoClicker == false then return end
+            game:GetService('Workspace').sellAreaCircles.sellAreaCircle16.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            wait(0.1)
+            game:GetService('Workspace').sellAreaCircles.sellAreaCircle16.circleInner.CFrame = CFrame.new(0,0,0)
+            wait(0.1)
+        end
+    end
+
+    function unlockIslands()
+        local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        for _,v in pairs(game:GetService('Workspace').islandUnlockParts:GetChildren()) do
+            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            wait(0.05)
+            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(307.297058, 123.87394, 1763.52197, 2.07424164e-05, 0.57355696, 0.819165647, -0.99999994, 2.07424164e-05, 1.07884407e-05, -1.07884407e-05, -0.819165647, 0.573557019)
+            wait(0.3)
+            wait(0.1)
+        end
+        wait(0.1)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
+    end
+
+    function farmBoss3()
+        local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        while _G.autoFarmBoss do
+            for _,v in pairs(game:GetService('Workspace').bossWalkParts3:GetChildren()) do
+                game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                wait(0.65)
+            end
+            wait(functionNum)
+        end
+        wait(0.1)
+        _G.autoClicker = false
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
+    end
+
+    function teleport()
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = _G.teleportSelection
+        wait(0.1)
+    end
+
+    function unlockSwords()
+        if not _G.buySwords then return end
+        local args = {
+            [1] = 'BuyAllSwords',
+            [2] = 'Blazing Vortex Island'
+        }
+        local requirement = game:GetService('Players').LocalPlayer.ninjaEvent
+        requirement:FireServer(unpack(args))
+        wait(0.1)
+    end
+
+    function openEgg()
+        while _G.autoHatchCrystals do
+            local args = {
+                [1] = 'openCrystal',
+                [2] = 'Infinity Void Crystal'
+            }
+
+            game:GetService('ReplicatedStorage').rEvents.openCrystalRemote:InvokeServer(unpack(args))
+        end
+    end
+
+    AutoFarmTab:Toggle{
+        Name = "AutoSwing",
+        StartingState = false,
+        Description = "Swings your katana for you",
+        Callback = function(state) 
+            _G.autoClicker = state
+            autoClick()
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoSell",
+        StartingState = false,
+        Description = "Do i even need to explain?",
+        Callback = function(state) 
+            _G.autoSell = state
+            autoSell()
+        end
+    }
+
+    PlayerTab:Button{
+        Name = "Teleport",
+        Description = "Teleport to the selected place",
+        Callback = function() 
+            teleport()
+        end
+    }
+
+    local teleportSelection = PlayerTab:Dropdown{
+        Name = "Select Island",
+        StartingText = "Spawn",
+        Description = "Select the place you want to go",
+        Items = {
+            {"Spawn (MAIN ISLAND)", CFrame.new(0,0,0)},
+            {"Cloning Altar (CLONING)", CFrame.new(4479.33154, 141.681931, 1382.17188, -0.422592998, 0, -0.906319618, 0, 1, 0, 0.906319618, 0, -0.422592998)},
+            {"Elements Altar (ELEMENTS)", CFrame.new(729.453125, 141.681931, -5902.17725, 0.984812498, -0, -0.173621148, 0, 1, -0, 0.173621148, 0, 0.984812498)},
+            {"DOJO (AFK FARMING)", CFrame.new(-4109.91553, 141.681931, -5908.68457, 0.939700544, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, 0.939700544)},
+            {"Enchanted Island", CFrame.new(26.9946918, 781.996155, -114.43486, 0, 0, -1, 0, 1, 0, 1, 0, 0)},
+            {"Astral Island", CFrame.new(247.097946, 2032.19617, 347.208893, 0.819155693, 0, 0.573571265, 0, 1, 0, -0.573571265, 0, 0.819155693)},
+            {"Mystical Island", CFrame.new(162.742065, 4065.7981, 13.3782578, -0.819156051, 0, 0.573571265, 0, 1, 0, -0.573571265, 0, -0.819156051)},
+            {"Tundra Island", CFrame.new(199.768478, 9303.29688, 12.9378996, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Sandstone Island", CFrame.new(199.768478, 17704.4473, 12.9378996, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Ancient Inferno Island", CFrame.new(197.86853, 28274.4121, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Midnight Shadow Island", CFrame.new(197.86853, 33225.1016, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Mythical Souls Island", CFrame.new(197.86853, 39335.6953, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Winter Wonder Island", CFrame.new(197.86853, 46028.6797, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Golden Master Island", CFrame.new(197.86853, 52625.8867, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Dragon Legends Island", CFrame.new(197.86853, 59612.8047, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Cybernetic Legends Island", CFrame.new(197.86853, 66687.2969, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Skystorm Ultraus Island", CFrame.new(197.86853, 70289.2891, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Soul Fusion Island", CFrame.new(197.86853, 79765.1172, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Dark Elements Island", CFrame.new(197.86853, 83217.1172, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Inner Peace Island", CFrame.new(197.86853, 87069.2031, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+            {"Blazing Vortex Island", CFrame.new(197.86853, 91264.2031, 7.03808689, -0.939700961, 0, 0.341998369, 0, 1, 0, -0.341998369, 0, -0.939700961)},
+        },
+        Callback = function(Items)
+            _G.teleportSelection = Items
+            print(_G.teleportSelection)
+        end
+    }
+
+    PlayerTab:Button{
+        Name = "Unlock All Islands",
+        Description = "Unlocks every island in the game currently available",
+        Callback = function() 
+            wait(1)
+            unlockIslands()
+        end
+    }
+
+    PlayerTab:Button{
+        Name = "Buy Swords",
+        Description = "Buys swords in the shop for you",
+        Callback = function() 
+            wait(1)
+            unlockSwords()
+        end
+    }
+
+    EggsTab:Toggle{
+        Name = "OpenEgg",
+        StartingState = false,
+        Description = "hi yt",
+        Callback = function(state) 
+            wait(1)
+            openEgg()
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoBuySwords",
+        StartingState = false,
+        Description = "Automatically buys swords in the shop for you ",
+        Callback = function(state) 
+            wait(1)
+            while true do
+                unlockSwords()
+            end
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Reset Character",
+        Description = "Resets your character",
+        Callback = function() 
+            wait(0.05)
+            char.Humanoid.Health = 0
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Kill Roblox",
+        Description = "Destroys roblox instance (just do alt+f4 smh)",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
+        end
+    }
+
+    MiscTab:Slider{
+        Name = "Zoom",
+        Default = 130,
+        Min = 1,
+        Max = 10000,
+        Callback = function(state) 
+            plr.CameraMaxZoomDistance = state
+        end
+    }
+
+    function godMode()
+        char.Humanoid.WalkSpeed = 155
+        char.Humanoid.JumpPower = 200
+        if _G.godMode == false then
+            char.Humanoid.WalkSpeed = 16
+            char.Humanoid.JumpPower = 50
+        end
+        wait(functionNum)
+    end
+
+    PlayerTab:Toggle{
+        Name = "GodMode",
+        StartingState = false,
+        Description = "Enables speed and jump powers",
+        Callback = function(state) 
+            _G.godMode = state
+            while true do
+                godMode()
+            end
+        end
+    }
+end
+
+-- Gas Station Simulator (LEGACY)
+if game.PlaceId == 10599426741 then
+    local functionNum = 0.00000000000000005
+    print('Loading NovalineHub')
+    local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
+
+    local Novaline = NovalineConnection:create{
+		Name = 'NovalineHub',
+        Theme = NovalineConnection.Themes.Dark
+    }
+
+    local AutoFarmTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "AutoFarmTab"
+    }
+
+    local PlayerTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
+
+    local MiscTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Misc"
+    }
+
+    _G.autoSprint = true
+    _G.autoClean = true
+
+    function clean()
+        while _G.autoClean do
+            local args = {
+                [1] = 'Clean',
+                [2] = workspace.Spot.Clean
+            }
+
+            game:GetService('ReplicatedStorage').Remote:FireServer(unpack(args))
+            wait(2)
+        end
+    end
+
+    function sprint()
+        while _G.autoSprint do
+            local args = {
+                [1] = 'Sprinting',
+                [2] = true
+            }
+
+            game:GetService('ReplicatedStorage').Remote:FireServer(unpack(args))
+            wait(functionNum)
+        end
+        local args = {
+            [1] = 'Sprinting',
+            [2] = false
+        }
+        game:GetService('ReplicatedStorage').Remote:FireServer(unpack(args))
+    end
+
+    AutoFarmTab:Toggle{
+        Name = "AutoSprint",
+        StartingState = false,
+        Description = "Sprints for you automatically",
+        Callback = function(state) 
+            _G.autoSprint = state
+            sprint()
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoClean",
+        StartingState = false,
+        Description = "Cleans windows for you automatically",
+        Callback = function(state) 
+            _G.autoClean = state
+            clean()
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Reset Character",
+        Description = "Resets your character",
+        Callback = function() 
+            wait(0.05)
+            char.Humanoid.Health = 0
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Kill Roblox",
+        Description = "Destroys roblox instance (just do alt+f4 smh)",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
+        end
+    }
+
+    MiscTab:Slider{
+        Name = "Zoom",
+        Default = 130,
+        Min = 1,
+        Max = 10000,
+        Callback = function(state) 
+            plr.CameraMaxZoomDistance = state
+        end
+    }
+
+    function godMode()
+        char.Humanoid.WalkSpeed = 155
+        char.Humanoid.JumpPower = 200
+        if _G.godMode == false then
+            char.Humanoid.WalkSpeed = 16
+            char.Humanoid.JumpPower = 50
+        end
+        wait(functionNum)
+    end
+
+    PlayerTab:Toggle{
+        Name = "GodMode",
+        StartingState = false,
+        Description = "Enables speed and jump powers",
+        Callback = function(state) 
+            _G.godMode = state
+            while true do
+                godMode()
+            end
+        end
+    }
+end
+
+-- Raise a Floppa (uwu)
+if game.PlaceId == 9203864304 then
+    local functionNum = 0.00000000000000005
+    print('Loading NovalineHub')
+    local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
+
+    local Novaline = NovalineConnection:create{
+		Name = 'NovalineHub',
+        Theme = NovalineConnection.Themes.Dark
+    }
+
+    local AutoFarmTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "AutoFarmTab"
+    }
+
+    local PlayerTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
+
+    local MiscTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Misc"
+    }
+
+    _G.buyFromShop = 'Floppa Food'
+    _G.selectedTeleport = CFrame.new(0,0,0)
+
+    function buy()
+        local args = {
+            [1] = _G.buyFromShop
+        }
+
+        game:GetService('ReplicatedStorage').Purchase:FireServer(unpack(args))
+    end
+
+    function teleport()
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = _G.selectedTeleport
+    end
+
+
+    AutoFarmTab:Button{
+        Name = "Buy Item",
+        Description = "Buys Item from Shop",
+        Callback = function() 
+            buy()
+        end
+    }
+
+    local shopSelection = AutoFarmTab:Dropdown{
+        Name = "Select Item",
+        StartingText = "Food",
+        Description = "Select the item you want",
+        Items = {
+            {"Food", 'Floppa Food'},
+            {"Roommate", 'Roommate'},
+            {"Post", 'Stratching Post'},
+            {"Hat", 'Cool Hat'},
+            {"Bed", 'Cat Bed'},
+            {"Ms. Floppa", 'Ms. Floppa'},
+            {"Divorce", 'Divorce Papers'},
+            {"Bowl", 'Baby Bowl'},
+            {"Milk", 'Milk Dish'},
+            {"Pizza Recipe", 'Pizza Recipe'},
+            {"Bed", 'Cat Bed'},
+            {"Maid", 'Neko Bed'},
+            {"Bingus", 'Bingus'},
+            {"Homie Sogga", 'Sogga'},
+            {"Maid 2", 'Neko Maid 2.0'},
+            {"Catnip", 'Catnip Plant'},
+            {"Fertilizer", 'Poop Fertilizer'},
+            {"Floppa Sword", 'Floppa Sword'},
+            {"Floppa Shield", 'Floppa Shield'},
+            {"Jinx", 'Jinx'},
+        },
+        Callback = function(Items)
+            _G.buyFromShop = Items
+            print(_G.buyFromShop)
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoRent",
+        StartState = false,
+        Description = "Gets rent from roommate automatically",
+        Callback = function(state)
+            _G.autoRent = state
+            getRent()
+        end
+    }
+
+    PlayerTab:Button{
+        Name = "Teleport",
+        Description = "Teleports to Selected Place",
+        Callback = function() 
+            teleport()
+        end
+    }
+    
+    local shopSelection = PlayerTab:Dropdown{
+        Name = "Select Place",
+        StartingText = "House",
+        Description = "Select where you want to teleport",
+        Items = {
+            {"Lake", 0,0,0},
+            {"Floppa Bowl", CFrame.new(-36.7804031, 5.1801753, -16.1630688, 0, 0, 1, 0, 1, -0, -1, 0, 0)},
+            {"Backrooms", CFrame.new(-12798.5664, 54.4847717, -16089.9521, -0.798616767, 0, -0.601840496, 0, 1, 0, 0.601840496, 0, -0.798616767)},
+            {"House", CFrame.new(-71.0050125, 6.17499161, -39.8749962, 1, 0, 0, 0, 1, 0, 0, 0, 1)},
+            {"Stove", CFrame.new(-49.1239243, 9.0375061, -61.9489136, -1, 0, 0, 0, 1, 0, 0, 0, -1)},
+            {"Mailbox", CFrame.new(5.94999886, 1.69999981, -54.4967422, 0, 0, 1, 0, 1, -0, -1, 0, 0)},
+            {"Jinx Cauldron", CFrame.new(-140.112122, 0.600000143, -117.70919, 0.10454309, 0, 0.994520426, 0, 1, 0, -0.994520426, 0, 0.10454309)},
+            {"Alien", CFrame.new(14.7750015, -82, 400, 0, 0, -1, 0, 1, 0, 1, 0, 0)},
+            {"Litter Box", CFrame.new(-81.7337418, 5.74499893, -17.6725349, 1, 0, 0, 0, 1, 0, 0, 0, 1)},
+        },
+        Callback = function(Items)
+            _G.selectedTeleport = Items
+            print(_G.selectedTeleport)
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Reset Character",
+        Description = "Resets your character",
+        Callback = function() 
+            wait(0.05)
+            char.Humanoid.Health = 0
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Kill Roblox",
+        Description = "Destroys roblox instance (just do alt+f4 smh)",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
+        end
+    }
+
+    MiscTab:Slider{
+        Name = "Zoom",
+        Default = 130,
+        Min = 1,
+        Max = 10000,
+        Callback = function(state) 
+            plr.CameraMaxZoomDistance = state
+        end
+    }
+
+    function godMode()
+        char.Humanoid.WalkSpeed = 155
+        char.Humanoid.JumpPower = 200
+        if _G.godMode == false then
+            char.Humanoid.WalkSpeed = 16
+            char.Humanoid.JumpPower = 50
+        end
+        wait(functionNum)
+    end
+
+    PlayerTab:Toggle{
+        Name = "GodMode",
+        StartingState = false,
+        Description = "Enables speed and jump powers",
+        Callback = function(state) 
+            _G.godMode = state
+            while true do
+                godMode()
+            end
+        end
+    }
+end
+
+-- Rebirth Champions X
+if game.PlaceId == 8540346411 then
+    local functionNum = 0.00000000000000005
+    print('Loading NovalineHub')
+    local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
+
+    local Novaline = NovalineConnection:create{
+		Name = 'NovalineHub',
+        Theme = NovalineConnection.Themes.Dark
+    }
+
+    local AutoFarmTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "AutoFarmTab"
+    }
+
+    local EggsTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
+
+    local MiscTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Misc"
+    }
+
+    _G.autoClicker = true
+    _G.autoRebirth = true
+    _G.autoRebirthSelection = 1
+    _G.autoHatch = true
+    _G.autoHatchEggSelection = 'Basic'
+
+    function autoHatch()
+        while _G.autoHatch do
+            local args = {
+                [1] = _G.autoHatchEggSelection,
+                [2] = 'Triple'
+            }
+
+            game:GetService('ReplicatedStorage').Functions.Unbox:InvokeServer(unpack(args))
+            wait(0.3)
+        end
+    end
+
+    function autoClick()
+        while _G.autoClicker do
+            game:GetService('ReplicatedStorage').Events.Click3:FireServer()
+            wait(functionNum)
+        end
+    end
+
+    function autoRebirth()
+        while _G.autoClicker do
+            local args = {
+                [1] = _G.autoRebirthSelection
+            }
+
+            game:GetService('ReplicatedStorage').Events.Rebirth:FireServer(unpack(args))
+            wait(functionNum)
+        end
+    end
+
+    AutoFarmTab:Toggle{
+        Name = "AutoClicker",
+        StartingState = false,
+        Description = "Clicks for you automatically",
+        Callback = function(state) 
+            _G.autoClicker = state
+            autoClick()
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoRebirth",
+        StartingState = false,
+        Description = "Rebirths for you automatically",
+        Callback = function(state) 
+            _G.autoRebirth = state
+            autoRebirth()
+        end
+    }
+
+    local rebirthSelection = AutoFarmTab:Dropdown{
+        Name = "Select Rebirths",
+        StartingText = "1 Rebirth",
+        Description = "Select the amount of rebirths",
+        Items = {
+            {"1 Rebirth", 1},
+            {"5 Rebirths", 2},
+            {"10 Rebirths", 3},
+            {"25 Rebirths", 4},
+            {"100 Rebirths", 5},
+            {"500 Rebirths", 6},
+            {"2.5K Rebirths", 7},
+            {"5K Rebirths", 8},
+            {"10K Rebirths", 9},
+            {"50K Rebirths", 10},
+        },
+        Callback = function(Items)
+            _G.autoRebirthSelection = Items
+            print(_G.autoRebirthSelection)
+        end
+    }
+
+    EggsTab:Toggle{
+        Name = "AutoUnbox",
+        StartingState = false,
+        Description = "Unboxes eggs for you",
+        Callback = function(state) 
+            _G.autoHatch = state
+            autoHatch()
+        end
+    }
+
+    local eggSelection = EggsTab:Dropdown{
+        Name = "Select Egg",
+        StartingText = "Basic Egg",
+        Description = "Select the egg you want to hatch",
+        Items = {
+            {"Basic Egg", 'Basic'},
+            {"Mythic Egg", 'Mythic'},
+            {"Forest Egg", 'Forest'},
+            {"Beach Egg", 'Beach'},
+            {"Atlantis Egg", 'Atlantis'},
+            {"Desert Egg", 'Desert'},
+            {"Winter Egg", 'Winter'},
+            {"Volcano Egg", 'Volcano'},
+            {"Moon Egg", 'Moon'},
+            {"Cyber Egg", 'Cyber'},
+            {"Magic Egg", 'Magic'},
+        },
+        Callback = function(Items)
+            _G.autoHatchEggSelection = Items
+            print(_G.autoHatchEggSelection)
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Reset Character",
+        Description = "Resets your character",
+        Callback = function() 
+            wait(0.05)
+            char.Humanoid.Health = 0
+        end
+    }
+
+    MiscTab:Button{
+        Name = "Kill Roblox",
+        Description = "Destroys roblox instance (just do alt+f4 smh)",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
+        end
+    }
+
+    MiscTab:Slider{
+        Name = "Zoom",
+        Default = 130,
+        Min = 1,
+        Max = 10000,
+        Callback = function(state) 
+            plr.CameraMaxZoomDistance = state
+        end
+    }
+
+    function godMode()
+        char.Humanoid.WalkSpeed = 155
+        char.Humanoid.JumpPower = 200
+        if _G.godMode == false then
+            char.Humanoid.WalkSpeed = 16
+            char.Humanoid.JumpPower = 50
+        end
+        wait(functionNum)
+    end
+
+    PlayerTab:Toggle{
+        Name = "GodMode",
+        StartingState = false,
+        Description = "Enables speed and jump powers",
+        Callback = function(state) 
+            _G.godMode = state
+            while true do
+                godMode()
+            end
+        end
+    }
+end
+
+-- Legends of Speed
+if game.PlaceId == 3101667897 then
+    local functionNum = 0.00000000000000005
+    print('Loading NovalineHub')
+    local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
+
+    local Novaline = NovalineConnection:create{
+		Name = 'NovalineHub',
+        Theme = NovalineConnection.Themes.Dark
+    }
+
+    local AutoFarmTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "AutoFarmTab"
+    }
+
+    local EggsTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
+
+    local MiscTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Misc"
+    }
+
+    _G.autoSpeed = true
+    _G.autoHatch = true
+    _G.autoRebirth = true
+    _G.autoCrystalSelection = 'Purple Crystal'
+    _G.autoRace = true
+
+    function autoSpeed()
+        while _G.autoSpeed do
+            local A_1 = {
+                [1] = 'collectOrb',
+                [2] = 'Red Orb',
+                [3] = 'City'
+            }
+
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            wait(functionNum)
+        end
+    end
+
+    function autoHatch()
+        while _G.autoHatch do
+            local A_1 = {
+                [1] = 'openCrystal',
+                [2] = _G.autoCrystalSelection
+            }
+
+            game:GetService('ReplicatedStorage').rEvents.openCrystalRemote:InvokeServer(unpack(A_1))
+        end
+    end
+
+    function autoRebirth()
+        while _G.autoRebirth do
+            local A_1 = {
+                [1] = 'rebirthRequest'
+            }
+            
+            game:GetService('ReplicatedStorage').rEvents.rebirthEvent:FireServer(unpack(A_1))
+            wait(functionNum)
+        end
+    end
+
+    function autoRace()
+        while _G.autoRace do
+            local args = {
+                [1] = "joinRace"
+            }
+
+            game:GetService("ReplicatedStorage").rEvents.raceEvent:FireServer(unpack(args))
+            wait(functionNum)
+        end
+    end
+
+    AutoFarmTab:Toggle{
+        Name = "AutoSpeed",
+        StartingState = false,
+        Description = "yes",
+        Callback = function(state) 
+            _G.autoSpeed = state
+            autoSpeed()
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoRebirth",
+        StartingState = false,
+        Description = "Rebirths for you automatically",
+        Callback = function(state) 
+            _G.autoRebirth = state
+            autoRebirth()
+        end
+    }
+
+    local crystalSelection = EggsTab:Dropdown{
+        Name = "Select Crystal",
+        StartingText = "Purple Crystal",
+        Description = "Select the crystal you want to hatch",
+        Items = {
+            {"Purple Crystal", 'Purple Crystal'},
+            {"Blue Crystal", 'Blue Crystal'},
+            {"Yellow Crystal", 'Yellow Crystal'},
+        },
+        Callback = function(Items)
+            _G.autoCrystalSelection = Items
+            print(_G.autoCrystalSelection)
+        end
+    }
+
+    EggsTab:Toggle{
+        Name = "AutoCrystal",
+        StartingState = false,
+        Description = "Opens Crystals for you automatically",
+        Callback = function(state) 
+            _G.autoHatch = state
+            autoHatch()
+        end
+    }
+
+    AutoFarmTab:Toggle{
+        Name = "AutoRace",
+        StartingState = false,
+        Description = "Joins races for you automatically",
+        Callback = function(state) 
+            _G.autoRace = state
+            autoRace()
+        end
+    }
 end
