@@ -8,6 +8,16 @@ The perfect hub for clicker games, now supporting over 6 games.
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/main/main.lua"))()
 ```
 
+## Latest Update (07/02/2023)
+- Added Support for Prison Life
+- Added Support for Ninja Legends
+- Added Support for Legends of Speed
+- Added Support for Rebirth Champions X
+- Added Support for Raise a Floppa
+- Added Support for Gas Station Simulator
+- Fixed Some Old Bugs
+- Probably going to add more features on Slashing Simulator next update.
+
 ## Supported Games
 - Base Raiders
 - Clicker Madness
@@ -17,5 +27,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Ultra Clickers Simulator
 - Clicker Party Simulator
 - Clicker Masters
+- Prison Life
+- Ninja Legends
+- Legends of Speed
+- Rebirth Champions X
+- Raise a Floppa
+- Gas Station Simulator (LEGACY)
 
-hi, its me moonzy, the only developer of novaline hub, pls star repo >-<
