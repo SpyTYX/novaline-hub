@@ -20,6 +20,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Rebirth Champions X
 - Raise a Floppa
 - Gas Station Simulator (LEGACY)
+- Muscle Legends
+- Saber Simulator
 
 # Updates (Shows Last 5 Updates)
 ## **f1.0.5 (07/02/2023)**
