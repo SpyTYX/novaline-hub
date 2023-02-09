@@ -55,9 +55,6 @@ function unlockIslands()
     for _,v in pairs(game:GetService('Workspace').islandUnlockParts:GetChildren()) do
         game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
         wait(0.05)
-        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(307.297058, 123.87394, 1763.52197, 2.07424164e-05, 0.57355696, 0.819165647, -0.99999994, 2.07424164e-05, 1.07884407e-05, -1.07884407e-05, -0.819165647, 0.573557019)
-        wait(0.3)
-        wait(0.1)
     end
     wait(0.1)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
