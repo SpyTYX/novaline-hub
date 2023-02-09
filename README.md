@@ -22,6 +22,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Gas Station Simulator (LEGACY)
 - Muscle Legends
 - Saber Simulator
+- Raise a Floppa 2 (BETA + UNSTABLE)
 
 # Updates (Shows Last 5 Updates)
 ## **f1.0.5 (07/02/2023)**
