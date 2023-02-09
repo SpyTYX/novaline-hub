@@ -1,4 +1,5 @@
-local functionNum = 0.00000000000000005
+local inf = math.huge; local defaultNum = 50
+    local functionNum = 0.00000000000000005
     local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
     local Novaline = NovalineConnection:create{
 		Name = 'NovalineHub',
@@ -175,7 +176,7 @@ local functionNum = 0.00000000000000005
     EggsTab:Toggle{
         Name = "OpenEgg",
         StartingState = false,
-        Description = "hi yt",
+        Description = "Adding selection to this soon, please wait!",
         Callback = function(state) 
             wait(1)
             openEgg()
@@ -218,13 +219,15 @@ local functionNum = 0.00000000000000005
         end
     }
     function godMode()
-        char.Humanoid.WalkSpeed = 155
-        char.Humanoid.JumpPower = 200
-        if _G.godMode == false then
-            char.Humanoid.WalkSpeed = 16
-            char.Humanoid.JumpPower = 50
+        while _G.godMode do
+            char.Humanoid.WalkSpeed = 155
+            char.Humanoid.JumpPower = 200
+            if _G.godMode == false then
+                char.Humanoid.WalkSpeed = 16
+                char.Humanoid.JumpPower = 50
+            end
+            wait(functionNum)
         end
-        wait(functionNum)
     end
     PlayerTab:Toggle{
         Name = "GodMode",
@@ -232,8 +235,6 @@ local functionNum = 0.00000000000000005
         Description = "Enables speed and jump powers",
         Callback = function(state) 
             _G.godMode = state
-            while true do
-                godMode()
-            end
+            godMode()
         end
     }
