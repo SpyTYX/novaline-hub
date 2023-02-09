@@ -1,24 +1,16 @@
---Vars
-local inf = math.huge; local defaultNum = 50; local plr = game.Players.LocalPlayer; local char = plr.Character
-
---Base Raiders
 print('Loading NovalineHub')
 local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
-
 local Novaline = NovalineConnection:create{
     Theme = NovalineConnection.Themes.Dark
 }
-
 local GunMods = Novaline:tab{
     Icon = "rbxassetid://4483362458",
     Name = "GunMods"
 }
-
 local Exploits = Novaline:tab{
     Icon = "rbxassetid://4483362458",
     Name = "Exploits"
 }
-
 local MiscTab = Novaline:tab{
     Icon = "rbxassetid://4483362458",
     Name = "Misc"
@@ -32,42 +24,34 @@ GunMods:button({
             local gun = require(v)
             gun.magSize = inf
         end
-        Novaline:set_status("Status: Enabled InfiniteAmmo Module")
 end})
-
 GunMods:button({
-    Name = "InfiniteGunRange",
-    Description = 'Gives your guns InfiniteGunRange',
+    Name = "NoGunRange",
+    Description = 'Makes your projectiles go as far as it can.',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
-            gun.range = 99999
+            gun.range = 999999
         end
-        Novaline:set_status("Status: Enabled InfiniteGunRange Module")
 end})
-
 GunMods:button({
-    Name = "MoreProjectiles",
-    Description = 'Gives your guns more projectiles to shoot.',
+    Name = "Projectiles",
+    Description = 'Makes your gun become a shotgun',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
             gun.pellets = defaultNum
         end
-        Novaline:set_status("Status: Enabled Projectiles Module")
 end})
-
 GunMods:button({
-    Name = "InfiniteRPM",
-    Description = 'Makes your guns go BRRR',
+    Name = "Firerate",
+    Description = 'Adds extra firerate to your guns.',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
             gun.RPM = 9999999999
         end
-        Novaline:set_status("Status: Enabled InfiniteRPM Module")
 end})
-
 GunMods:button({
     Name = "ProjectileSpeed",
     Description = 'Makes your guns go BRRR',
@@ -76,90 +60,60 @@ GunMods:button({
             local gun = require(v)
             gun.bulletspeed = inf
         end
-        Novaline:set_status("Status: Enabled ProjectileSpeed Module")
 end})
-
 GunMods:button({
-    Name = "FireMode",
-    Description = 'Changes fire mode.',
+    Name = "AutoFire",
+    Description = 'Makes your guns automatically fire, even pistols or shotguns.',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
             gun.firemode = 1
         end
-        Novaline:set_status("Status: Enabled FireMode Module")
 end})
-
 GunMods:button({
     Name = "NoSpread",
-    Description = 'Stops projectiles spreading around',
+    Description = 'Stops your projectiles from spreading.',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
             gun.maxSpread = 0
             gun.minSpread = 0
         end
-        Novaline:set_status("Status: Enabled InfiniteGunRange Module")
 end})
-
 GunMods:button({
     Name = "Shotgun",
-    Description = 'Makes your projectile spread more (Overwrites NoSpread)',
+    Description = 'Adds extra spread to your projectiles (OVERWRITES NOSPREAD)',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
             gun.addSpread = 1
         end
-        Novaline:set_status("Status: Enabled Shoutgun Module")
 end})
-
-Novaline:Credit{
-    Name = "Manaxtri",
-    Description = "Creator of NovalineHub",
-    V3rm = "https://v3rmillion.net/member.php?action=profile&uid=2975312",
-    Discord = "Moons#9999"
-}
-
 Exploits:button({
     Name = "CrashExploit",
-    Description = 'Crashes Client (Sometimes crashes server)',
+    Description = 'Crashes Client',
     Callback = function()
         for i,v in pairs(game.ReplicatedStorage.WeaponScripts.WeaponConfigs:GetChildren()) do
             local gun = require(v)
-            gun.RPM = inf
             gun.pellets = inf
-            gun.addSpread = inf
         end
-        Novaline:set_status("Status: Enabled CrashExploit Module")
 end})
-
 MiscTab:Button{
     Name = "Reset Character",
-    Description = "Resets your character",
+    Description = "Respawns your character",
     Callback = function() 
         wait(0.05)
         char.Humanoid.Health = 0
     end
 }
-
 MiscTab:Button{
     Name = "Kill Roblox",
-    Description = "Destroys roblox instance (just do alt+f4 smh)",
+    Description = "Destroys roblox instance.",
     Callback = function() 
         wait(1)
         game:Shutdown()
     end
 }
-
-MiscTab:Button{
-    Name = "Destroy NovalineHub",
-    Description = "whyyy :(((!!!",
-    Callback = function() 
-        wait(1)
-        Novaline:Destroy()
-    end
-}
-
 MiscTab:Slider{
     Name = "Zoom",
     Default = 130,
