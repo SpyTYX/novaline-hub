@@ -24,13 +24,18 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Saber Simulator
 - Raise a Floppa 2 (BETA + UNSTABLE)
 
-# Updates (Shows Last 5 Updates)
+## **v1.0.6** (09/02/2023)
+- We have a new game detection system! This is the best and the most advanced game detection we ever had.
+- Added Support for Raise a Floppa 2 (UNSTABLE, BETA)
+- Changed README Style (again)
+
+**Notes:**
+- A new update is coming soon, this update will include a bunch of updates for games and some new games if i have the time.
+
 ## **f1.0.5 (07/02/2023)**
 **Added:**
 - Added Support for Muscle Legends
 - Added Support for Saber Simulator
-
-**Changed:**
 - Changed README Style
 
 **Notes:**
@@ -44,8 +49,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Added Support for Rebirth Champions X
 - Added Support for Raise a Floppa
 - Added Support for Gas Station Simulator
-
-**Fixed:**
 - Fixed Some Old Bugs
 
 **Notes:**
