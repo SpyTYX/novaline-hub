@@ -29,6 +29,7 @@ local functionNum = 0.00000000000000005
     _G.autoHatchSelection = 'Common Egg'
     _G.autoUpgrade = true
     _G.autoUpgradeSelection = 'WalkSpeed'
+    _G.TELEPORT = CFrame.new(56.3626099, 39.3325577, -12.0610352, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 
     function autoClick()
         while _G.autoClicker do
@@ -72,6 +73,9 @@ local functionNum = 0.00000000000000005
             game:GetService("ReplicatedStorage").GameClient.Events.RemoteFunction.Upgrade:InvokeServer(unpack(args))
             wait(1)
         end
+    end
+    function teleport()
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = _G.TELEPORT
     end
     AutoFarmTab:Toggle{
         Name = "AutoClicker",
@@ -181,11 +185,39 @@ local functionNum = 0.00000000000000005
             {"Space Egg", "Space Egg"},
             {"Mushroom Egg", "Mushroom Egg"},
             {"Molten Egg", "Molten Egg"},
-            {"Lunar Egg (EVENT)", "Chinese NY Egg"},
+            {"Valentines Egg (EVENT)", "Valentines Egg"},
         },
         Callback = function(Items)
             _G.autoHatchSelection = Items
             print(_G.autoHatchSelection)
+        end
+    }
+    WorldsTab:Button{
+        Name = "Teleport",
+        Description = "Teleport to Place",
+        Callback = function(state) 
+            teleport()
+        end
+    }
+    local teleportSelection = WorldsTab:Dropdown{
+        Name = "Select Place",
+        StartingText = "Spawn",
+        Description = "Select the place you want to teleport",
+        Items = {
+            {"Spawn", CFrame.new(56.3626099, 39.3325577, -12.0610352, 1, 0, 0, 0, 1, 0, 0, 0, 1)},
+            {"Candy", CFrame.new(-1130.09204, 38.7322578, 479.765228, -0.994635344, 0, 0.103447407, 0, 1, 0, -0.103447407, 0, -0.994635344)},
+            {"Space", CFrame.new(-174.272781, 38.9076996, -1357.51648, -0.994635344, 0, 0.103447407, 0, 1, 0, -0.103447407, 0, -0.994635344)},
+            {"Frost", CFrame.new(1142.75415, 38.9777298, -1138.39832, -0.994635344, 0, 0.103447407, 0, 1, 0, -0.103447407, 0, -0.994635344)},
+            {"Atlantis", CFrame.new(1246.86426, 39.527977, 388.76001, -0.695458889, 0, 0.718566, 0, 1, 0, -0.718566, 0, -0.695458889)},
+            {"Mushroom", CFrame.new(2581.36646, 156.07254, 1497.7948, -0.695458889, 0, 0.718566, 0, 1, 0, -0.718566, 0, -0.695458889)},
+            {"Volcano", CFrame.new(451.014496, 3.50049973, 3785.31787, -0.695458889, 0, 0.718566, 0, 1, 0, -0.718566, 0, -0.695458889)},
+            {"World 2", CFrame.new(19.50284, 64.81633, -444.098602, -0.994635344, 0, 0.103447407, 0, 1, 0, -0.103447407, 0, -0.994635344)},
+            {"Magic", CFrame.new(682.56543, 37.4032516, -694.229736, 1, 0, 0, 0, 1, 0, 0, 0, 1)},
+            {"Prism", CFrame.new(-592.85199, 62.7257996, -527.149536, -0.994635344, 0, 0.103447407, 0, 1, 0, -0.103447407, 0, -0.994635344)},
+            {"Time", CFrame.new(-1293.99792, 65.4832001, -526.124695, -0.994635344, 0, 0.103447407, 0, 1, 0, -0.103447407, 0, -0.994635344)},
+        },
+        Callback = function(Items)
+            _G.TELEPORT = Items
         end
     }
     MiscTab:Button{
