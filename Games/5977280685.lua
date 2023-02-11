@@ -31,7 +31,7 @@ function autoClick()
             [1] = 'swingBlade'
         }
         game:GetService('Players').LocalPlayer.saberEvent:FireServer(unpack(A_1))
-        wait(functionNum)
+        wait(0.000000000000000000000005)
     end
 end
 function autoSell()
