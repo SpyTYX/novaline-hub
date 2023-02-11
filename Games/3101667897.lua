@@ -8,6 +8,10 @@ local functionNum = 0.00000000000000005
         Icon = "rbxassetid://4483362458",
         Name = "AutoFarmTab"
     }
+    local PlayerTab = Novaline:tab{
+        Icon = "rbxassetid://4483362458",
+        Name = "Player"
+    }
     local EggsTab = Novaline:tab{
         Icon = "rbxassetid://4483362458",
         Name = "Player"
@@ -17,6 +21,7 @@ local functionNum = 0.00000000000000005
         Name = "Misc"
     }
 
+    _G.antiHJ = true
     _G.autoSpeed = true
     _G.autoHatch = true
     _G.autoRebirth = true
@@ -31,51 +36,16 @@ local functionNum = 0.00000000000000005
                 [2] = 'Red Orb',
                 [3] = 'City'
             }
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
-            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
+            game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1)); game:GetService('ReplicatedStorage').rEvents.orbEvent:FireServer(unpack(A_1))
             wait(functionNum)
         end
     end
@@ -106,14 +76,14 @@ local functionNum = 0.00000000000000005
             }
 
             game:GetService("ReplicatedStorage").rEvents.raceEvent:FireServer(unpack(args))
-            wait(functionNum)
+            wait(1)
         end
     end
 
     AutoFarmTab:Toggle{
         Name = "AutoSpeed",
         StartingState = false,
-        Description = "yes",
+        Description = "GetOnTheLeaderboards.exe",
         Callback = function(state) 
             _G.autoSpeed = state
             autoSpeed()
@@ -187,7 +157,7 @@ local functionNum = 0.00000000000000005
         end
     }
     function godMode()
-        char.Humanoid.WalkSpeed = 155
+        char.Humanoid.WalkSpeed = 365
         char.Humanoid.JumpPower = 200
         if _G.godMode == false then
             char.Humanoid.WalkSpeed = 16
@@ -195,7 +165,7 @@ local functionNum = 0.00000000000000005
         end
         wait(functionNum)
     end
-    MiscTab:Toggle{
+    PlayerTab:Toggle{
         Name = "GodMode",
         StartingState = false,
         Description = "Enables speed and jump powers",
