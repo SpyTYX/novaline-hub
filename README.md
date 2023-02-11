@@ -22,7 +22,18 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Gas Station Simulator (LEGACY)
 - Muscle Legends
 - Saber Simulator
-- Raise a Floppa 2 (BETA + UNSTABLE)
+- Raise a Floppa 2 (UNSTABLE)
+- Ninja Legends 2
+- Boss Fighting Simulator
+
+## **mv1.0.7** (11/02/2023)
+- Added Support for Ninja Legends 2
+- Added Support for Boss Fighting Simulator
+- Updated Legends of Speed
+- Updated Raise a Floppa 2
+- Updated Clicking Legends X
+- Fixed Ninja Legends Crashing on New Loader
+- Updated Slashing Simulator (finally.)
 
 ## **v1.0.6** (09/02/2023)
 - We have a new game detection system! This is the best and the most advanced game detection we ever had.
