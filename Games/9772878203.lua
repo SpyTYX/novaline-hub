@@ -18,11 +18,12 @@ local functionNum = 0.00000000000000005
     }
 
     _G.buyItem = 'Floppa Food'
-    _G.autoRent = true
+    _G.autoRent = false
+    _G.teleportToRent = true
 
     function purchase()
         local A_1 = {
-            [1] = 'Floppa Food',
+            [1] = _G.buyItem,
             [2] = 'the_interwebs'
         }
 
@@ -32,7 +33,7 @@ local functionNum = 0.00000000000000005
         game:GetService("ReplicatedStorage").Events:FindFirstChild('Collect Rent'):FireServer()
     end
     function teleportToRent()
-        while _G.autoRent do
+        while _G.autoRent and _G.teleportToRent do
             game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-78.1193771, 71.3375015, -41.8958969, 0, 0, 1, 0, 1, -0, -1, 0, 0)
             wait(0.5)
         end
@@ -53,28 +54,18 @@ local functionNum = 0.00000000000000005
         Items = {
             {"Food", 'Floppa Food'},
             {"Roommate", 'Roommate'},
-            {"Calender", 'Calender'},
+            {"Calendar", 'Calendar'},
             {"Poster", 'Cat Poster'},
-            {"Post", 'Stratching Post'},
+            {"Post", 'Scratching Post'},
             {"Yarn", 'Yarn'},
             {"Bed", 'Cat Bed'},
             {"Plant", 'Houseplant'},
             {"Recipe Book", 'Cook Book'},
             {"Bowl", 'Baby Bowl'},
             {"Ms. Floppa", 'Ms. Floppa'},
-            {"Divorce", 'Divorce Papers'},
             {"Milk", 'Milk Dish'},
-            {"Pizza Recipe", 'Pizza Recipe'},
-            {"Bed", 'Cat Bed'},
-            {"Maid", 'Neko Bed'},
-            {"Bingus", 'Bingus'},
-            {"Homie Sogga", 'Sogga'},
-            {"Maid 2", 'Neko Maid 2.0'},
-            {"Catnip", 'Catnip Plant'},
-            {"Fertilizer", 'Poop Fertilizer'},
-            {"Floppa Sword", 'Floppa Sword'},
-            {"Floppa Shield", 'Floppa Shield'},
-            {"Jinx", 'Jinx'},
+            {"Painting", 'Floppa Painting'},
+            {"Maid", 'Neko Maid'},
         },
         Callback = function(Items)
             _G.buyItem = Items
@@ -105,7 +96,8 @@ local functionNum = 0.00000000000000005
         Name = "Teleport to Rent?",
         StartingState = false,
         Description = "Teleports to the place where rent spawns while this is on (FOR AFKING)",
-        Callback = function(state) 
+        Callback = function(state)
+            _G.teleportToRent = state 
             teleportToRent()
         end
     }
