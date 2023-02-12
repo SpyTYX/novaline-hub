@@ -26,7 +26,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Ninja Legends 2
 - Boss Fighting Simulator
 
-## **mv1.0.7** (11/02/2023)
+## **m1.0.7** (11/02/2023)
 - Added Support for Ninja Legends 2
 - Added Support for Boss Fighting Simulator
 - Updated Legends of Speed
