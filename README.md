@@ -1,4 +1,4 @@
-[![discord server](https://cdn.discordapp.com/attachments/1063180819952324719/1070398524417638420/novalinehub-banner.png)]()
+[![discord server](https://cdn.discordapp.com/attachments/1074738117531140226/1075009024812126229/image.png)]()
 
 # Use Script
 ```lua
