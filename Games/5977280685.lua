@@ -22,25 +22,29 @@ local MiscTab = Novaline:tab{
     Name = "Misc"
 }
 
-local autoClicker = true
-local autoSell = true
+_G.autoClicker = true
+_G.autoSell = true
+_G.autoBoss = true
 
 function autoClick()
-    while autoClicker do
+    while _G.autoClicker do
         local A_1 = {
             [1] = 'swingBlade'
         }
         game:GetService('Players').LocalPlayer.saberEvent:FireServer(unpack(A_1))
-        wait(0.000000000000000000000005)
+        wait(functionNum)
     end
 end
 function autoSell()
     local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    if autoClicker == false then return end
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-91.0118713, 8634.64941, 32.5466194, 4.76837158e-05, 0.996190667, -0.0872024298, -1, 4.76837158e-05, -2.08243728e-06, 2.08243728e-06, 0.0872024298, 0.996190608)
-    wait(0.05)
+    while _G.autoSell do
+        if not _G.autoClicker then return end
+        game:GetService('Workspace').sellAreaCircles.sellAreaCircle.circleInner.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        wait(0.1)
+        game:GetService('Workspace').sellAreaCircles.sellAreaCircle.circleInner.CFrame = CFrame.new(0,0,0)
+        wait(0.1)
+    end
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
-    wait(0.3)
 end
 function unlockAll()
     local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -59,22 +63,36 @@ function unlockAll()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
     wait(0.25)
 end
+
 function getChests()
-    local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-336.880371, 122.914238, 217.311035, -2.24113464e-05, -0.25886941, 0.965912342, -1, 2.24113464e-05, -1.719594e-05, -1.719594e-05, -0.965912342, -0.25886941)
-    wait(0.2)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(89.7286835, 1476.91418, 129.094696, -2.07424164e-05, -0.57355696, -0.819165647, -0.99999994, 2.07424164e-05, 1.07884407e-05, 1.07884407e-05, 0.819165647, -0.5735569)
-    wait(0.2)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(89.7286835, 3067.01416, 129.094696, -2.07424164e-05, -0.57355696, -0.819165647, -0.99999994, 2.07424164e-05, 1.07884407e-05, 1.07884407e-05, 0.819165647, -0.5735569)
-    wait(0.2)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(89.7286835, 4691.01416, 129.094696, -2.07424164e-05, -0.57355696, -0.819165647, -0.99999994, 2.07424164e-05, 1.07884407e-05, 1.07884407e-05, 0.819165647, -0.5735569)
-    wait(0.2)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(88.8582993, 6321.11426, 15.3222427, 2.05039978e-05, 0.499938965, -0.866060615, -1, 2.05039978e-05, -1.18613243e-05, 1.18613243e-05, 0.866060615, 0.499938965)
-    wait(0.2)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(89.7286835, 8641.51367, 129.094696, -2.07424164e-05, -0.57355696, -0.819165647, -0.99999994, 2.07424164e-05, 1.07884407e-05, 1.07884407e-05, 0.819165647, -0.5735569)
-    wait(0.1)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Daily Rewards Chest')
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Cybernetic Chest')
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Chaos Origins Chest')
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Rising Eternity Chest')
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Divine Destiny Chest')
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Dark Nebula Chest')
+    game:GetService('ReplicatedStorage').rEvents.checkChestRemote:InvokeServer('Group Rewards Chest')
     wait(0.25)
+end
+function redeemCodes()
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('shurikencity500')
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('bossbattle300')
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('treeninja400')
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('firstplanet250')
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('waterfall500')
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('epicturrets450')
+    game:GetService("ReplicatedStorage").rEvents.codeRemote:InvokeServer('epictower350')
+end
+function autoBoss()
+    local oldCFrame = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame
+    while _G.autoBoss do
+        for _,v in pairs(game:GetService('Workspace').spawnedBosses:GetChildren()) do
+            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+            wait()
+        end
+        wait()
+    end
+    game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
 end
 
 AutoFarmTab:Toggle{
@@ -82,20 +100,28 @@ AutoFarmTab:Toggle{
     StartingState = false,
     Description = "Swings your katana for you",
     Callback = function(state) 
-        autoClicker = state
+        _G.autoClicker = state
         autoClick()
     end
 }
 AutoFarmTab:Toggle{
-    Name = "AutoSell",
+    Name = 'AutoSells',
+    Description = 'Sells your elements automatically',
     StartingState = false,
-    Description = "Automatically sells your elements (TELEPORT-BASED)",
-    Callback = function(state) 
-        autoSell = state
+    Callback = function(state)
+        _G.autoSell = state
         autoSell()
     end
 }
-
+AutoFarmTab:Toggle{
+    Name = 'AutoBoss',
+    Description = 'Teleports to the boss and hits it till it dies.',
+    StartingState = false,
+    Callback = function(state)
+        _G.autoBoss = state
+        autoBoss()
+    end
+}
 PlayerTab:Button{
     Name = "Unlock All Islands",
     Description = "Unlocks every island in the game currently available",
@@ -111,5 +137,14 @@ PlayerTab:Button{
     Callback = function() 
         wait(1)
         getChests()
+    end
+}
+
+PlayerTab:Button{
+    Name = "Redeem Codes",
+    Description = "Redeems every code in the game",
+    Callback = function() 
+        wait(1)
+        redeemCodes()
     end
 }
