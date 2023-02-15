@@ -14,7 +14,7 @@ local functionNum = 0.00000000000000005
     }
     local WorldsTab = Novaline:tab{
         Icon = "rbxassetid://4483362458",
-        Name = "Player"
+        Name = "Worlds"
     }
     local MiscTab = Novaline:tab{
         Icon = "rbxassetid://4483362458",
@@ -23,6 +23,10 @@ local functionNum = 0.00000000000000005
 
     _G.autoClicker = true
     _G.autoSell = true
+    _G.autoGet = true
+    _G.autoBuyFarming = true
+    _G.autoBuy = true
+    _G.autoBoss = true
     
     function autoClick()
         while _G.autoClicker do
@@ -38,6 +42,53 @@ local functionNum = 0.00000000000000005
             game:GetService('ReplicatedStorage').Events.UpdateData:InvokeServer()
             wait(functionNum)
         end
+    end
+    function autoGet()
+        oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        while _G.autoGet do
+            for _,v in pairs(game.Workspace.CandyHolder:GetChildren()) do
+                if not _G.autoGet then return end
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                wait(0.35)
+            end
+            for _,v in pairs(game.Workspace.CoinsHolder:GetChildren()) do
+                if not _G.autoGet then return end
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                wait(0.35)
+            end
+            wait()
+        end
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
+    end
+    function autoBuyFarming()
+        while _G.autoBuyFarming do
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('Swords')
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('Backpacks')
+            wait()
+        end
+    end
+    function autoBuy()
+        while _G.autoBuy do
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('Swords')
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('Backpacks')
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('JumpBoosts')
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('BossBoosts')
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('Auras')
+            game:GetService('ReplicatedStorage').Events.BuyAll:FireServer('PetAuras')
+            wait()
+        end
+    end
+    function autoBoss()
+        oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        while _G.autoBoss do
+            for _,v in pairs(game.Workspace.Locations.ArenaSpawns:GetChildren()) do
+                if not _G.autoBoss then return end
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                wait(1.25)
+            end
+            wait()
+        end
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
     end
 
     AutoFarmTab:Toggle{
@@ -56,6 +107,42 @@ local functionNum = 0.00000000000000005
         Callback = function(state) 
             _G.autoSell = state
             autoSell()
+        end
+    }
+    AutoFarmTab:Toggle{
+        Name = "AutoBuyFarming",
+        StartingState = false,
+        Description = "Buys DNAs and Swords automatically",
+        Callback = function(state) 
+            _G.autoBuyFarming = state
+            autoBuyFarming()
+        end
+    }
+    AutoFarmTab:Toggle{
+        Name = "AutoBuy",
+        StartingState = false,
+        Description = "Buys literally everything possible automatically",
+        Callback = function(state) 
+            _G.autoBuy = state
+            autoBuy()
+        end
+    }
+    AutoFarmTab:Toggle{
+        Name = "AutoBoss",
+        StartingState = false,
+        Description = "Teleports to boss and kills it automatically",
+        Callback = function(state) 
+            _G.autoBoss = state
+            autoBoss()
+        end
+    }
+    WorldsTab:Toggle{
+        Name = "AutoGet",
+        StartingState = false,
+        Description = "Gets coins and hearts for you automatically",
+        Callback = function(state) 
+            _G.autoGet = state
+            autoGet()
         end
     }
     MiscTab:Button{
