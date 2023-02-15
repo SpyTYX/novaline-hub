@@ -32,3 +32,28 @@ MainTab:Button{
         complete()
     end
 }
+MiscTab:Button{
+    Name = "Reset Character",
+    Description = "Respawns your character",
+    Callback = function() 
+        wait(0.05)
+        char.Humanoid.Health = 0
+    end
+}
+MiscTab:Button{
+    Name = "Kill Roblox",
+    Description = "Destroys roblox instance.",
+    Callback = function() 
+        wait(1)
+        game:Shutdown()
+    end
+}
+MiscTab:Slider{
+    Name = "Zoom",
+    Default = 130,
+    Min = 1,
+    Max = 10000,
+    Callback = function(state) 
+        plr.CameraMaxZoomDistance = state
+    end
+}
