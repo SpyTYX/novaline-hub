@@ -1,6 +1,18 @@
-repeat
-wait()
-until game:IsLoaded()
-print("NovalineHub by Moons#9999")
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/main/Games/"..game.PlaceId..".lua"))()
-print("Loading Support for Place ID-"..game.PlaceId)
+game.Loaded:Wait()
+
+local RequestFunction = (syn or syn.request) or request or http_request
+local Repository = "https://raw.githubusercontent.com/SpyTYX/novaline-hub/main/Games"
+
+if (not RequestFunction) then
+    Player:Kick [[Exploit not supported.]]
+    return
+end
+
+local Response = RequestFunction({
+    Url = string.format("%s%i.lua", Repository, game.PlaceId),
+    Method = "GET",
+})
+
+if (Response.Body == "404: Not Found") then return end
+
+loadstring(Response.Body)()
