@@ -1,4 +1,6 @@
 local functionNum = 0.00000000000000005
+local char = game.Players.LocalPlayer.Character
+local plr = game.Players.LocalPlayer
     local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
     local Novaline = NovalineConnection:create{
 		Name = 'NovalineHub',
@@ -31,7 +33,7 @@ local functionNum = 0.00000000000000005
     function autoClick()
         while _G.autoClicker do
             local args = {
-                [1] = e
+                [1] = 'e'
             }
 
             game:GetService("ReplicatedStorage").Click:FireServer(unpack(args))
