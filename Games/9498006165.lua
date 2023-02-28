@@ -1,4 +1,7 @@
 local functionNum = 0.00000000000000005
+local char = game.Players.LocalPlayer.Character
+local plr = game.Players.LocalPlayer
+    print('Loading NovalineHub')
     local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
     local Novaline = NovalineConnection:create{
 		Name = 'NovalineHub',
@@ -37,7 +40,7 @@ local functionNum = 0.00000000000000005
             }
 
             game:GetService("ReplicatedStorage").Events.Tap:FireServer()
-            wait(functionNum)
+            wait()
         end
     end
     function autoRebirth()
@@ -47,7 +50,7 @@ local functionNum = 0.00000000000000005
             }
 
             game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(unpack(args))
-            wait(functionNum)
+            wait()
         end
     end
     function hatchEgg()
@@ -62,6 +65,14 @@ local functionNum = 0.00000000000000005
             wait(0.00005)
         end
     end
+    function redeemCodes()
+        game:GetService("ReplicatedStorage").Events.ClaimCode:FireServer("void")
+        wait()
+        game:GetService("ReplicatedStorage").Events.ClaimCode:FireServer("secretfreepetcode")
+        wait()
+        game:GetService("ReplicatedStorage").Events.ClaimCode:FireServer("void")
+        wait()
+    end
     function speed()
         while _G.speed do
             char.Humanoid.WalkSpeed = _G.selectedSpeed
@@ -73,9 +84,8 @@ local functionNum = 0.00000000000000005
             [1] = _G.selectedTeleport
         }
 
-        game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(args))
+        game:GetService("ReplicatedStorage").Events.Teleport:FireServer(unpack(A_1))
     end
-    
     AutoFarmTab:Toggle{
         Name = "AutoClicker",
         StartingState = false,
@@ -109,6 +119,14 @@ local functionNum = 0.00000000000000005
         },
         Callback = function(Items) 
             _G.rebirthSelection = Items
+        end
+    }
+    AutoFarmTab:Button{
+        Name = "Redeem Codes",
+        Description = "Redeems Codes",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
         end
     }
     EggsTab:Toggle{
@@ -154,7 +172,7 @@ local functionNum = 0.00000000000000005
             {"Candy Egg", "Candy Egg"},
             {"Festive Egg", "Festival Egg"},
             {"Japanese Egg", "Japan Egg"},
-            {"75M Egg (EVENT)", "75M Egg"},
+            {"80M Egg (EVENT)", "80M Egg"},
         },
         Callback = function(Items) 
             _G.egg = Items
@@ -229,20 +247,20 @@ local functionNum = 0.00000000000000005
             char.Humanoid.Health = 0
         end
     }
-MiscTab:Button{
-    Name = "Kill Roblox",
-    Description = "Destroys roblox instance",
-    Callback = function() 
-        wait(1)
-        game:Shutdown()
-    end
-}
-MiscTab:Slider{
-    Name = "Zoom",
-    Default = 130,
-    Min = 1,
-    Max = 10000,
-    Callback = function(state) 
-        plr.CameraMaxZoomDistance = state
-    end
-}
+    MiscTab:Button{
+        Name = "Kill Roblox",
+        Description = "Destroys roblox instance",
+        Callback = function() 
+            wait(1)
+            game:Shutdown()
+        end
+    }
+    MiscTab:Slider{
+        Name = "Zoom",
+        Default = 130,
+        Min = 1,
+        Max = 10000,
+        Callback = function(state) 
+            plr.CameraMaxZoomDistance = state
+        end
+    }
