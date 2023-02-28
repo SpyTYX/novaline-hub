@@ -1,5 +1,7 @@
 -- Raise a Floppa (uwu, owo, furr, purr, nya, 0w0, >-<, 'w', ^w^, *w*)
 local functionNum = 0.00000000000000005
+local char = game.Players.LocalPlayer.Character
+local plr = game.Players.LocalPlayer
     local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
     local Novaline = NovalineConnection:create{
 		Name = 'NovalineHub',
@@ -68,15 +70,6 @@ local functionNum = 0.00000000000000005
         Callback = function(Items)
             _G.buyFromShop = Items
             print(_G.buyFromShop)
-        end
-    }
-    AutoFarmTab:Toggle{
-        Name = "AutoRent",
-        StartState = false,
-        Description = "Gets rent from roommate automatically",
-        Callback = function(state)
-            _G.autoRent = state
-            getRent()
         end
     }
     PlayerTab:Button{
