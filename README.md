@@ -28,6 +28,13 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Strongest Punch Simulator
 - Omega Obby
 - Easy Obby
+- Treasure Hunt Simulator
+- Ski Race
+- Doors Race
+- Race Clickers
+- Animal Simulator
+- Guess the Logo
+- Strong Muscle Simulator
 
 ## IMPORTANT:
 Update logs have been moved to releases. Please go to releases in order to view the update logs.
