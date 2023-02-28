@@ -42,9 +42,9 @@ AutoFarmTab:Toggle{
         autoSlice()
     end
 }
-local teleportSelection = GunMods:Dropdown{
+local teleportSelection = AutoFarmTab:Dropdown{
     Name = "Select Place",
-    StartingText = "Spawn,
+    StartingText = "Spawn",
     Description = "Select Teleport Place",
     Items = {
         {"Spawn", CFrame.new()},
@@ -53,7 +53,8 @@ local teleportSelection = GunMods:Dropdown{
         _G.CFrame = Items
     end
 }
-local placeSelection = EggsTab:Dropdown{
+
+local placeSelection = AutoFarmTab:Dropdown{
     Name = "Select Place",
     StartingText = "Spawn",
     Description = "Select the place you want to Teleport to",
@@ -81,6 +82,7 @@ MiscTab:Button{
     Description = "Respawns your Character",
     Callback = function() 
         wait(0.05)
+        local char = game.Players.LocalPlayer.Character
         char.Humanoid.Health = 0
     end
 }
@@ -97,7 +99,8 @@ MiscTab:Slider{
     Default = 130,
     Min = 1,
     Max = 10000,
-    Callback = function(state) 
+    Callback = function(state)
+        local plr = game.Players.LocalPlayer
         plr.CameraMaxZoomDistance = state
     end
 }
