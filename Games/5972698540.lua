@@ -1,4 +1,6 @@
 local functionNum = 0.00000000000000005
+local char = game.Players.LocalPlayer.Character
+local plr = game.Players.LocalPlayer
 local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
 local Novaline = NovalineConnection:create{
 	Name = 'NovalineHub',
@@ -19,11 +21,28 @@ local MiscTab = Novaline:tab{
 
 function complete()
     wait(1)
-    for _,v in pairs(game:GetService('Workspace').Stages:GetChildren()) do
-        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.Checkpoint.Checkpoint.CFrame
-        wait(0.05)
-    end
-    game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(908.24585, 567.100891, 416.48584, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.5, -153, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248.000488, 1.5, -73.0004425, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
+    char.HumanoidRootPart.CFrame = CFrame.new(-248, 2.22947788, -259.93219, -1, 0, 0, 0, 1, 0, 0, 0, -1);
+    wait()
 end
 
 MainTab:Button{
