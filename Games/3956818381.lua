@@ -1,4 +1,6 @@
 local inf = math.huge; local defaultNum = 50
+local char = game.Players.LocalPlayer.Character
+local plr = game.Players.LocalPlayer
 local functionNum = 0.00000000000000005
 local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
 local Novaline = NovalineConnection:create{
@@ -79,7 +81,7 @@ end
 function unlockSwords()
     if not _G.buySwords then return end
     local args = {
-        [1] = 'BuyAllSwords',
+        [1] = 'buyAllSwords',
         [2] = 'Blazing Vortex Island'
     }
     local requirement = game:GetService('Players').LocalPlayer.ninjaEvent
@@ -109,7 +111,7 @@ AutoFarmTab:Toggle{
 AutoFarmTab:Toggle{
     Name = "AutoSell",
     StartingState = false,
-    Description = "Do i even need to explain?",
+    Description = "Sells your ninjitsu automatically",
     Callback = function(state) 
         _G.autoSell = state
         autoSell()
