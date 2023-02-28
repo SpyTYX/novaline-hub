@@ -16,7 +16,7 @@ local MiscTab = Novaline:tab{
 _G.teleport = CFrame.new()
 
 function autoWin()
-    oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     for _,v in pairs(game:GetService('Workspace').Winparts:GetChildren()) do
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Part.CFrame
         wait(5.5)
