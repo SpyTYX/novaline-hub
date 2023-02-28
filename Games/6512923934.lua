@@ -1,4 +1,6 @@
 local functionNum = 0.00000000000000005
+    local char = game.Players.LocalPlayer.Character
+    local plr = game.Players.LocalPlayer
     local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
     local Novaline = NovalineConnection:create{
 		Name = 'NovalineHub',
@@ -40,7 +42,7 @@ local functionNum = 0.00000000000000005
     }
     MiscTab:Button{
         Name = "Reset Character",
-        Description = "Resets your character",
+        Description = "Respawns your Character",
         Callback = function() 
             wait(0.05)
             char.Humanoid.Health = 0
@@ -48,18 +50,10 @@ local functionNum = 0.00000000000000005
     }
     MiscTab:Button{
         Name = "Kill Roblox",
-        Description = "Destroys roblox instance (just do alt+f4 smh)",
+        Description = "Destroys roblox instance",
         Callback = function() 
             wait(1)
             game:Shutdown()
-        end
-    }
-    MiscTab:Button{
-        Name = "Destroy NovalineHub",
-        Description = "whyyy :(((!!!",
-        Callback = function() 
-            wait(1)
-            Novaline:Destroy()
         end
     }
     MiscTab:Slider{
