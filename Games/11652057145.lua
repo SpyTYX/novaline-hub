@@ -1,4 +1,6 @@
 local functionNum = 5e-17
+local char = game.Players.LocalPlayer.Character
+local plr = game.Players.LocalPlayer
 local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
 local Novaline = NovalineConnection:create{
     Name = 'NovalineHub',
@@ -7,6 +9,10 @@ local Novaline = NovalineConnection:create{
 local AutoFarmTab = Novaline:tab{
     Icon = "rbxassetid://4483362458",
     Name = "AutoFarms"
+}
+local WorldTab = Novaline:tab{
+    Icon = "rbxassetid://4483362458",
+    Name = "Worlds"
 }
 local EggsTab = Novaline:tab{
     Icon = "rbxassetid://4483362458",
@@ -47,7 +53,7 @@ function autoRebirth()
 end
 function autoBeast()
     while _G.autoBeast do
-        game:GetService(ReplicatedStorage).Aero.AeroRemoteServices.BeastModeService.Begin:FireServer()
+        game:GetService('ReplicatedStorage').Aero.AeroRemoteServices.BeastModeService.Begin:FireServer()
         wait(1)
     end
 end
@@ -66,7 +72,10 @@ function upgrade()
         [1] = _G.upgradeSelection
     }
 
-    game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.UpgradeService.BuyUpgrade:FireServer(unpack(args))
+    game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.UpgradeService.BuyUpgrade:FireServer(unpack(A_1))
+end
+function teleport()
+    char.HumanoidRootPart.CFrame = _G.teleport
 end
 
 AutoFarmTab:Toggle{
