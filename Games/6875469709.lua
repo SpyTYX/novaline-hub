@@ -140,7 +140,7 @@ local worldSelection = AutoFarmTab:Dropdown{
         {"World 21", game:GetService('Workspace').Map.Stages.Boosts[21]},
         {"World 22", game:GetService('Workspace').Map.Stages.Boosts[22]},
         {"World 23", game:GetService('Workspace').Map.Stages.Boosts[23]},
-        {"World 24", game:GetService('Workspace').Map.Stages.Boosts[24]:},
+        {"World 24", game:GetService('Workspace').Map.Stages.Boosts[24]},
     },
     Callback = function(Items)
         orbMapSelection = Items
