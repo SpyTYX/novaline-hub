@@ -31,6 +31,43 @@ function autoCoin()
         wait(functionNum)
     end
 end
+function getCoins()
+    for _,v in ipairs(game:GetService('Workspace').Coins:GetChildren()) do
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.SM_Icon_Coin_03.CFrame
+        task.wait()
+    end
+end
+function getEnergy()
+    local oldCFrame = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
+    for _,v in ipairs(game:GetService('Workspace').Pick.Normal.Drop.Vip:GetChildren()) do
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+        task.wait(0.15)
+    end
+    task.wait()
+    for _,v in ipairs(game:GetService('Workspace').Pick.Normal.Drop.LT1:GetChildren()) do
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+        task.wait(0.15)
+    end
+    task.wait()
+    for _,v in ipairs(game:GetService('Workspace').Pick.Normal.Drop.LT2:GetChildren()) do
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+        task.wait(0.15)
+    end
+    task.wait()
+    for _,v in ipairs(game:GetService('Workspace').Pick.Normal.Drop.LT3:GetChildren()) do
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+        task.wait(0.15)
+    end
+    game:GetService('Players').LocalPlayer.Character.HumanoidRootPart = oldCFrame.CFrame
+end
+function win()
+    local hrp = game:GetService('Players').LocalPlayer.Character:WaitForChild('HumanoidRootPart')
+    hrp.CFrame = game:GetService('Workspace').EndTouch.CFrame
+    task.wait()
+    hrp.CFrame = game:GetService('Workspace').EndTouch.CFrame
+    task.wait()
+    hrp.CFrame = game:GetService('Workspace').EndTouch.CFrame
+end
 function equipSki()
     game:GetService("ReplicatedStorage").Remote.Event.Skin:FindFirstChild("[C-S]TryEquipSkin2"):FireServer()
     wait(0.5)
@@ -47,7 +84,7 @@ function autoHatch()
         local A_1 = {
             [1] = _G.autoHatchSelection
         }
-        game:GetService('ReplicatedStorage').Remotes.Function.Luck:FindFirstChild('[C-S]DoLuck'):InvokeServer(unpack(A_1))
+        game:GetService('ReplicatedStorage').Remote.Function.Luck:FindFirstChild('[C-S]DoLuck'):InvokeServer(unpack(A_1))
         wait(0.5)
     end
 end
@@ -59,6 +96,27 @@ MainTab:Toggle{
     Callback = function(state)
         _G.autoCoin = state
         autoCoin()
+    end
+}
+MainTab:Button{
+    Name = "AutoCoin (TP)",
+    Description = "Collects coins for you (TELEPORT BASED)",
+    Callback = function()
+        getCoins()
+    end
+}
+MainTab:Button{
+    Name = "AutoPick",
+    Description = "Picks energy for you",
+    Callback = function()
+        getEnergy()
+    end
+}
+MainTab:Button{
+    Name = "Win",
+    Description = "haha 9M studs go brrrr",
+    Callback = function()
+        win()
     end
 }
 MainTab:Button{
