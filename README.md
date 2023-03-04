@@ -35,6 +35,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Animal Simulator
 - Guess the Logo
 - Strong Muscle Simulator
+- Classroom Simulator
+- Stairs of Rage
+- Stateview Prison
+- Block Eating Simulator
 
 ## IMPORTANT:
 Update logs have been moved to releases. Please go to releases in order to view the update logs.
