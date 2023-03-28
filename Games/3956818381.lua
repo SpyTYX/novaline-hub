@@ -28,10 +28,13 @@ _G.autoClicker = true
 _G.autoSell = true
 _G.autoUnlockAllIslands = true
 _G.buySwords = true
+_G.buyBelts = true
 _G.godMode = true
 _G.teleportSelection = CFrame.new(0,0,0)
 _G.autoHatchCrystals = true
 _G.autoFarmBoss = true
+_G.autoDuel = true
+_G.NHD = true
 
 function autoClick()
     while _G.autoClicker do
@@ -64,38 +67,66 @@ end
 function farmBoss3()
     local oldCFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     while _G.autoFarmBoss do
-        for _,v in pairs(game:GetService('Workspace').bossWalkParts3:GetChildren()) do
-            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-            wait(0.65)
-        end
-        wait(functionNum)
+        if not game:GetService("Workspace").bossFolder.AncientMagmaBoss then return end
+        game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").bossFolder.AncientMagmaBoss.HumanoidRootPart.CFrame
+        wait(0.65)
     end
     wait(0.1)
-    _G.autoClicker = false
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = oldCFrame
-    end
+end
 function teleport()
     game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = _G.teleportSelection
     wait(0.1)
 end
 function unlockSwords()
     if not _G.buySwords then return end
-    local args = {
+    local A_1 = {
         [1] = 'buyAllSwords',
         [2] = 'Blazing Vortex Island'
     }
     local requirement = game:GetService('Players').LocalPlayer.ninjaEvent
-    requirement:FireServer(unpack(args))
-    wait(0.1)
+    requirement:FireServer(unpack(A_1))
+    task.wait(3)
+end
+function unlockBelts()
+    if not _G.buyBelts then return end
+    local A_1 = {
+        [1] = 'buyAllBelts',
+        [2] = 'Blazing Vortex Island'
+    }
+    local requirement = game:GetService('Players').LocalPlayer.ninjaEvent
+    requirement:FireServer(unpack(A_1))
+    task.wait(3)
 end
 function openEgg()
     while _G.autoHatchCrystals do
-        local args = {
+        local A_1 = {
             [1] = 'openCrystal',
             [2] = 'Infinity Void Crystal'
         }
 
-        game:GetService('ReplicatedStorage').rEvents.openCrystalRemote:InvokeServer(unpack(args))
+        game:GetService('ReplicatedStorage').rEvents.openCrystalRemote:InvokeServer(unpack(A_1))
+    end
+end
+function autoDuel()
+    while _G.autoDuel do
+        if not _G.autoDuel then return end
+        if not plr then return end
+        game:GetService('ReplicatedStorage').rEvents.duelEvent:FireServer('joinDuel')
+        task.wait(1)
+    end
+end
+function noDamage()
+    while _G.NHD do
+        local character = plr:FindFirstChild('Character')
+        if plr and character then
+            local humanoid = character:FindFirstChild('Humanoid')
+            humanoid.Health = 100
+            task.wait()
+            humanoid.Health = 99
+            task.wait()
+        end
+        task.wait()
     end
 end
 
@@ -172,6 +203,16 @@ PlayerTab:Button{
         unlockSwords()
     end
 }
+PlayerTab:Toggle{
+    Name = "NoDamage",
+    StartingState = false,
+    Description = "Stops you from getting damage",
+    Callback = function(state) 
+        wait(1)
+        _G.NHD = state
+        noDamage()
+    end
+}
 EggsTab:Toggle{
     Name = "OpenEgg",
     StartingState = false,
@@ -184,12 +225,45 @@ EggsTab:Toggle{
 AutoFarmTab:Toggle{
     Name = "AutoBuySwords",
     StartingState = false,
-    Description = "Automatically buys swords in the shop for you ",
+    Description = "Automatically buys swords in the shop for you",
     Callback = function(state) 
         wait(1)
-        while true do
+        _G.buySwords = state
+        while _G.buySwords do
             unlockSwords()
         end
+    end
+}
+AutoFarmTab:Toggle{
+    Name = "AutoBuyBelts",
+    StartingState = false,
+    Description = "Automatically buys belts in the shop for you",
+    Callback = function(state)
+        wait(1)
+        _G.AutoBuyBelts = state
+        while _G.AutoBuyBelts do
+            unlockBelts()
+        end
+    end
+}
+AutoFarmTab:Toggle{
+    Name = "AutoJoinDuels",
+    StartingState = false,
+    Description = "Automatically joins duels for you",
+    Callback = function(state)
+        wait(1)
+        _G.autoDuel = state
+        autoDuel()
+    end
+}
+AutoFarmTab:Toggle{
+    Name = "AutoFarmBoss",
+    StartingState = false,
+    Description = "Automatically farms the boss for you",
+    Callback = function(state)
+        wait(1)
+        _G.autoFarmBoss = state
+        farmBoss3()
     end
 }
 MiscTab:Button{
@@ -218,14 +292,15 @@ MiscTab:Slider{
     end
 }
 function godMode()
-    while _G.godMode do
-        char.Humanoid.WalkSpeed = 155
-        char.Humanoid.JumpPower = 200
-        if _G.godMode == false then
-            char.Humanoid.WalkSpeed = 16
-            char.Humanoid.JumpPower = 50
+    if _G.godMode then
+        while _G.godMode do
+            char.Humanoid.WalkSpeed = 155
+            char.Humanoid.JumpPower = 200
+            wait(functionNum)
         end
-        wait(functionNum)
+    else
+        char.Humanoid.WalkSpeed = 16
+        char.Humanoid.JumpPower = 50
     end
 end
 PlayerTab:Toggle{
