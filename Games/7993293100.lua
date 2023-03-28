@@ -85,6 +85,20 @@ local tpSelection = MainTab:Dropdown{
     end
 }
 
+function godMode()
+    if _G.godMode then
+        while _G.godMode do
+            char.Humanoid.WalkSpeed = 155
+            char.Humanoid.JumpPower = 200
+            wait(functionNum)
+        end
+    else
+        char.Humanoid.WalkSpeed = 16
+        char.Humanoid.JumpPower = 50
+    end
+end
+
+
 MainTab:Button{
     Name = 'Win',
     Description = 'Teleports you to the end',
@@ -146,15 +160,3 @@ MiscTab:Slider{
         plr.CameraMaxZoomDistance = state
     end
 }
-function godMode()
-    if _G.godMode then
-        while _G.godMode do
-            char.Humanoid.WalkSpeed = 155
-            char.Humanoid.JumpPower = 200
-            wait(functionNum)
-        end
-    else
-        char.Humanoid.WalkSpeed = 16
-        char.Humanoid.JumpPower = 50
-    end
-end
