@@ -21,6 +21,7 @@ local MiscTab = Novaline:tab{
 
 _G.autoAFK = true
 _G.autoReload = true
+_G.checkStaff = true
 
 function afk()
     game:GetService("ReplicatedStorage").AFK:FireServer(true)
@@ -41,6 +42,28 @@ function reload()
     game:GetService("Players").LocalPlayer.Character:FindFirstChild("Glock 17").Networking.Reload:InvokeServer(unpack(A_1))
     wait()
 end
+function staffPrompt()
+    Novaline:Prompt{
+        Followup = false,
+        Title = 'Warning',
+        Text = "A Staff Member has joined the game, leaving in 3.5 seconds.",
+        Buttons = {}
+    }
+end
+function checkStaff()
+    while _G.checkStaff do
+        for _,v in ipairs(game:GetService('Players'):GetChildren()) do
+            if v.Name == '1qwaiii' or 'tuty_785' or 'arkis_x7' or 'kancat309' or 'Indywyc' or 'KequingImpact' or 'iiArdaXs' or 'officerfisher55' or 'skoseck' or 'BellaM13234' or 'Faintersoup705' or 'JackThePlayer109' or 'Niceblue92163' or 'EricM_YTReal' or 'Bebik_22' or 'Mrmarshmellogamer' or 'frankw7563' or 'Mallarows' or 'gyhjzxd' or 'hannahlouise_14' or 'Firegamer2107' or 'Gansje33' or 'Freaks104' or 'Piecrustmangucci' or 'Luckychoclatekitty' or 'Marti_432' or 'MrYandrak_s' or 'Jonirei13' or 'l5wis' or 'zaini08' or 'IPSUM_20' or 'blub20074' or 'dramaking125' or 'OMBgamingYT' or 'Cinderbelle' or 'MyUsernamesThis' or 'SlimJim_LBG' or 'TheRoyal_Tim' or 'Farley120' or 'Khaia21' or 'DABO17' or 'Rvsila' or 'Sergeant_Wallace' or 'trulybadger' or 'Ghostiiana' or 'xJimm_y' or 'Watercoolings' or '23Sebee' or 'Axcerious' or 'AlreadyPro' or 'SIRJIMM_Y' then
+                staffPrompt()
+                wait(3.5)
+                game:Shutdown()
+            end
+            wait(2.5)
+        end
+        task.wait(1)
+    end
+    task.wait(1)
+end
 
 MainTab:Button{
     Name = "Reload",
@@ -49,7 +72,6 @@ MainTab:Button{
         afk()
     end
 }
-
 MainTab:Toggle{
     Name = "AutoReload",
     StartingState = false,
@@ -61,6 +83,15 @@ MainTab:Toggle{
         end
     end
 }
+MainTab:Toggle{
+    Name = "AntiStaff",
+    StartingState = false,
+    Description = "Leaves if a staff member joins the game (30+ STAFF)",
+    Callback = function(state)
+        _G.checkStaff = state
+        checkStaff()
+    end
+}
 
 TrollTab:Button{
     Name = "AFK",
@@ -69,7 +100,6 @@ TrollTab:Button{
         afk()
     end
 }
-
 TrollTab:Toggle{
     Name = "AutoAFK",
     StartingState = false,
@@ -87,6 +117,7 @@ MiscTab:Button{
         char.Humanoid.Health = 0
     end
 }
+
 MiscTab:Button{
     Name = "Kill Roblox",
     Description = "Destroys roblox instance.",
