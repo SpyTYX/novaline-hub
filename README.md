@@ -11,7 +11,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Slashing Simulator
 - Tapping Simulator
 - Clicking Legends X
-- Ultra Clickers Simulator
+- Ultra Clickers Simulator (STOPPED SUPPORT)
 - Clicker Party Simulator
 - Clicker Masters
 - Prison Life
@@ -26,8 +26,8 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Ninja Legends 2
 - Boss Fighting Simulator
 - Strongest Punch Simulator
-- Omega Obby
-- Easy Obby
+- Omega Obby (STOPPED SUPPORT)
+- Easy Obby(STOPPED SUPPORT)
 - Treasure Hunt Simulator
 - Ski Race
 - Doors Race
@@ -39,6 +39,11 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Stairs of Rage
 - Stateview Prison
 - Block Eating Simulator
-
-## IMPORTANT:
-Update logs have been moved to releases. Please go to releases in order to view the update logs.
+- Infectious Smile
+- Tsunami Game
+- Guts and Blackpowder
+- Tower of Hell
+- Expedition Antartica
+- Punch Through Walls Simulator
+- Jumping Pets
+- A Literal Baseplate
