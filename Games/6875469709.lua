@@ -1,4 +1,6 @@
 local functionNum = 0.00000000000000005
+local plr = game:GetService('Players').LocalPlayer
+local char = plr.Character
 local NovalineConnection = loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/mercury-plus/main/mercury-plus.lua"))()
 local Novaline = NovalineConnection:create{
 	Name = 'NovalineHub',
@@ -22,44 +24,7 @@ _G.autoOrbs = true
 local orbMapSelection = game:GetService('Workspace').Map.Stages.Boosts[1]
 _G.autoMap = true
 _G.autoBreak = true
-_G.orbsHelper = 0
 _G.autoUpgradePet = true
-
-while true do
-    if orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[1] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[2] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[3] then
-        _G.orbsHelper = 0.10000000149011612
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[4] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[5] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[6] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[7] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[8] then
-        _G.orbsHelper = 0.10000000149011612
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[9] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[10] then
-        _G.orbsHelper = 0.5
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[11] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[12] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[13] then
-        _G.orbsHelper = 0.10000000149011612
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[14] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[15] then
-        _G.orbsHelper = 0
-    elseif orbMapSelection == game:GetService('Workspace').Map.Stages.Boosts[16] then
-        _G.orbsHelper = 0
-    end
-end
 
 function autoPunch()
     while _G.autoPunch do
@@ -86,10 +51,13 @@ function teleportToNextMap()
 end
 function autoOrbs()
     while _G.autoOrbs do
-        for _,v in pairs(orbMapSelection:GetChildren()) do
-            if not _G.autoOrbs then return end
-            game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v[_G.orbsHelper].CFrame
-            wait(0.40)
+        if plr and char then
+            local humanoidRootPart = char:FindFirstChild('HumanoidRootPart')
+            for _,v in pairs(orbMapSelection:GetChildren()) do
+                if not _G.autoOrbs then return end
+                humanoidRootPart.CFrame = v[0].CFrame
+                wait(0.40)
+            end
         end
     end
 end
@@ -106,7 +74,7 @@ AutoFarmTab:Toggle{
 AutoFarmTab:Toggle{
     Name = "AutoOrbs",
     StartingState = false,
-    Description = "Gets all of the orbs in the map (BETA+BUGGYa)",
+    Description = "Gets all of the orbs in the map (BETA+BUGGY)",
     Callback = function(state) 
         _G.autoOrbs = state
         autoOrbs()
