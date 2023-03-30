@@ -27,7 +27,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Boss Fighting Simulator
 - Strongest Punch Simulator
 - Omega Obby (STOPPED SUPPORT)
-- Easy Obby(STOPPED SUPPORT)
+- Easy Obby (STOPPED SUPPORT)
 - Treasure Hunt Simulator
 - Ski Race
 - Doors Race
