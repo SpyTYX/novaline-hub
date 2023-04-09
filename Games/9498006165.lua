@@ -25,6 +25,7 @@ local plr = game.Players.LocalPlayer
     }
 
     _G.autoClicker = true
+    _G.eventClicker = true
     _G.autoRebirth = true
     _G.rebirthSelection = 1
     _G.autoHatchEgg = true
@@ -35,12 +36,22 @@ local plr = game.Players.LocalPlayer
 
     function autoClick()
         while _G.autoClicker do
-            local args = {
-                [1] = 'Main'
-            }
-
             game:GetService("ReplicatedStorage").Events.Tap:FireServer()
-            wait()
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer()
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer()
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer()
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer()
+            task.wait();
+        end
+    end
+    function eventClicker()
+        while _G.eventClicker do
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer('Events')
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer('Events')
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer('Events')
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer('Events')
+            game:GetService("ReplicatedStorage").Events.Tap:FireServer('Events')
+            task.wait();
         end
     end
     function autoRebirth()
@@ -50,7 +61,7 @@ local plr = game.Players.LocalPlayer
             }
 
             game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(unpack(args))
-            wait()
+            task.wait();
         end
     end
     function hatchEgg()
@@ -62,7 +73,7 @@ local plr = game.Players.LocalPlayer
             }
 
             game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
-            wait(0.00005)
+            task.wait();
         end
     end
     function redeemCodes()
@@ -76,7 +87,7 @@ local plr = game.Players.LocalPlayer
     function speed()
         while _G.speed do
             char.Humanoid.WalkSpeed = _G.selectedSpeed
-            wait(functionNum)
+            task.wait();
         end
     end
     function teleport()
@@ -93,6 +104,15 @@ local plr = game.Players.LocalPlayer
         Callback = function(state) 
             _G.autoClicker = state
             autoClick()
+        end
+    }
+    AutoFarmTab:Toggle{
+        Name = "EventClicker",
+        StartingState = false,
+        Description = "Enable this clicker on event areas",
+        Callback = function(state) 
+            _G.eventClicker = state
+            eventClicker()
         end
     }
     AutoFarmTab:Toggle{
@@ -172,7 +192,9 @@ local plr = game.Players.LocalPlayer
             {"Candy Egg", "Candy Egg"},
             {"Festive Egg", "Festival Egg"},
             {"Japanese Egg", "Japan Egg"},
-            {"80M Egg (EVENT)", "80M Egg"},
+            {"Easter Egg (EVENT)", "Easter Egg"},
+            {"Easter Bunny Egg (EVENT)", "Easter Bunny Egg"},
+            {"Divine Easter Egg (EVENT)", "Divine Easter Egg"},
         },
         Callback = function(Items) 
             _G.egg = Items
