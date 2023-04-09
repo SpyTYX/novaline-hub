@@ -6,6 +6,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 ```
 
 # Supported Games
+**CURRENT TOTAL: 50**
 - Base Raiders
 - Clicker Madness
 - Slashing Simulator
@@ -47,3 +48,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Punch Through Walls Simulator
 - Jumping Pets
 - A Literal Baseplate
+- 1 Fat Every Second
+- Punch Wall Simulator
+- Wall Destroyer Simulator
+- Destroy Walls Simulator
+- Be Crushed by a Speeding Wall
+- Game Store Tycoon
+- Dig to China
