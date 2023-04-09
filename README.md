@@ -55,3 +55,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SpyTYX/novaline-hub/m
 - Be Crushed by a Speeding Wall
 - Game Store Tycoon
 - Dig to China
+- Shuba Duck
+- Meow Meow
