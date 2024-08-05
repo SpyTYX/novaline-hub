@@ -1,4 +1,7 @@
-[![discord server](https://cdn.discordapp.com/attachments/1074738117531140226/1075009024812126229/image.png)]()
+# Discontinued & Archived
+#### Discontinued as of 5th of August, 2024.
+#### Novaline Hub and the main Novaline Executor died over a year ago sadly.
+#### I can't say if the games will work, neither can I say if they will bypass the anticheats. Use at your own risk.
 
 # Use Script
 ```lua
